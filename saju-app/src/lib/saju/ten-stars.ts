@@ -1,0 +1,70 @@
+import type { HeavenlyStem, TenStar, Pillar, TenStarAnalysis, TenStarEntry, FiveElement } from '@/types/saju'
+import { BRANCH_MAIN_STEM, STEM_ELEMENT } from './constants'
+
+const TEN_STAR_TABLE: Record<HeavenlyStem, Record<HeavenlyStem, TenStar>> = {
+  '갑': { '갑': '비견', '을': '겁재', '병': '식신', '정': '상관', '무': '편재', '기': '정재', '경': '편관', '신': '정관', '임': '편인', '계': '정인' },
+  '을': { '갑': '겁재', '을': '비견', '병': '상관', '정': '식신', '무': '정재', '기': '편재', '경': '정관', '신': '편관', '임': '정인', '계': '편인' },
+  '병': { '갑': '편인', '을': '정인', '병': '비견', '정': '겁재', '무': '식신', '기': '상관', '경': '편재', '신': '정재', '임': '편관', '계': '정관' },
+  '정': { '갑': '정인', '을': '편인', '병': '겁재', '정': '비견', '무': '상관', '기': '식신', '경': '정재', '신': '편재', '임': '정관', '계': '편관' },
+  '무': { '갑': '편관', '을': '정관', '병': '편인', '정': '정인', '무': '비견', '기': '겁재', '경': '식신', '신': '상관', '임': '편재', '계': '정재' },
+  '기': { '갑': '정관', '을': '편관', '병': '정인', '정': '편인', '무': '겁재', '기': '비견', '경': '상관', '신': '식신', '임': '정재', '계': '편재' },
+  '경': { '갑': '편재', '을': '정재', '병': '편관', '정': '정관', '무': '편인', '기': '정인', '경': '비견', '신': '겁재', '임': '식신', '계': '상관' },
+  '신': { '갑': '정재', '을': '편재', '병': '정관', '정': '편관', '무': '정인', '기': '편인', '경': '겁재', '신': '비견', '임': '상관', '계': '식신' },
+  '임': { '갑': '식신', '을': '상관', '병': '편재', '정': '정재', '무': '편관', '기': '정관', '경': '편인', '신': '정인', '임': '비견', '계': '겁재' },
+  '계': { '갑': '상관', '을': '식신', '병': '정재', '정': '편재', '무': '정관', '기': '편관', '경': '정인', '신': '편인', '임': '겁재', '계': '비견' },
+} as const
+
+export function getTenStar(dayStem: HeavenlyStem, targetStem: HeavenlyStem): TenStar {
+  return TEN_STAR_TABLE[dayStem][targetStem]
+}
+
+interface PillarSet {
+  readonly yearPillar: Pillar
+  readonly monthPillar: Pillar
+  readonly dayPillar: Pillar
+  readonly hourPillar: Pillar | null
+}
+
+export function calculateTenStars(dayHeavenlyStem: HeavenlyStem, pillars: PillarSet): TenStarAnalysis {
+  const entries: TenStarEntry[] = []
+
+  const addEntry = (position: string, stem: HeavenlyStem): void => {
+    entries.push({
+      position,
+      star: getTenStar(dayHeavenlyStem, stem),
+      element: STEM_ELEMENT[stem],
+    })
+  }
+
+  const addBranchEntry = (position: string, pillar: Pillar): void => {
+    const branchStem = BRANCH_MAIN_STEM[pillar.earthlyBranch]
+    entries.push({
+      position,
+      star: getTenStar(dayHeavenlyStem, branchStem),
+      element: STEM_ELEMENT[branchStem],
+    })
+  }
+
+  addEntry('연간', pillars.yearPillar.heavenlyStem)
+  addBranchEntry('연지', pillars.yearPillar)
+  addEntry('월간', pillars.monthPillar.heavenlyStem)
+  addBranchEntry('월지', pillars.monthPillar)
+  addEntry('일간', pillars.dayPillar.heavenlyStem)
+  addBranchEntry('일지', pillars.dayPillar)
+
+  if (pillars.hourPillar) {
+    addEntry('시간', pillars.hourPillar.heavenlyStem)
+    addBranchEntry('시지', pillars.hourPillar)
+  }
+
+  const starCounts = entries.reduce<Record<string, number>>((acc, entry) => {
+    return { ...acc, [entry.star]: (acc[entry.star] ?? 0) + 1 }
+  }, {})
+
+  const dominantStar = Object.entries(starCounts)
+    .sort(([, a], [, b]) => b - a)[0]?.[0] ?? '비견'
+
+  const summary = `일간 ${dayHeavenlyStem}(${STEM_ELEMENT[dayHeavenlyStem]}) 기준, ${dominantStar}이(가) 가장 많습니다.`
+
+  return { stars: entries, summary }
+}

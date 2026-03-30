@@ -1,0 +1,606 @@
+{
+  "version": "2.0",
+  "lastUpdated": "2026-03-30T21:49:37.026Z",
+  "activeFeatures": [
+    "saju-app",
+    "layout",
+    "stores",
+    "saju",
+    "result",
+    "fortune",
+    "yearly",
+    "major",
+    "compatibility",
+    "supabase",
+    "chat",
+    "my",
+    "login",
+    "ai",
+    "calculate",
+    "reading",
+    "daily",
+    "callback"
+  ],
+  "primaryFeature": "saju-app",
+  "features": {
+    "saju-app": {
+      "phase": "do",
+      "planPath": "docs/01-plan/features/saju-app.plan.md",
+      "designPath": "docs/02-design/features/saju-app.design.md",
+      "startedAt": "2026-03-30T13:10:00.000Z",
+      "phaseHistory": [
+        "plan",
+        "design",
+        "do"
+      ],
+      "phaseNumber": 3,
+      "lastFile": "C:/dev/사주팔자/saju-app/src/lib/utils/date.ts",
+      "timestamps": {
+        "lastUpdated": "2026-03-30T13:52:37.055Z"
+      }
+    },
+    "layout": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-30T13:48:52.905Z",
+        "lastUpdated": "2026-03-30T13:49:06.970Z"
+      },
+      "lastFile": "C:/dev/사주팔자/saju-app/src/components/layout/mobile-layout.tsx"
+    },
+    "stores": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-30T13:49:16.676Z",
+        "lastUpdated": "2026-03-30T13:49:16.676Z"
+      },
+      "lastFile": "C:/dev/사주팔자/saju-app/src/stores/saju-store.ts"
+    },
+    "saju": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-30T13:49:37.030Z",
+        "lastUpdated": "2026-03-30T13:52:11.691Z"
+      },
+      "lastFile": "C:/dev/사주팔자/saju-app/src/lib/saju/calculator.ts"
+    },
+    "result": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-30T13:50:21.517Z",
+        "lastUpdated": "2026-03-30T13:51:14.501Z"
+      },
+      "lastFile": "C:/dev/사주팔자/saju-app/src/app/compatibility/result/page.tsx"
+    },
+    "fortune": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-30T13:50:32.627Z",
+        "lastUpdated": "2026-03-30T13:50:32.627Z"
+      },
+      "lastFile": "C:/dev/사주팔자/saju-app/src/app/fortune/page.tsx"
+    },
+    "yearly": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-30T13:50:37.753Z",
+        "lastUpdated": "2026-03-30T13:50:37.753Z"
+      },
+      "lastFile": "C:/dev/사주팔자/saju-app/src/app/fortune/yearly/page.tsx"
+    },
+    "major": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-30T13:50:48.871Z",
+        "lastUpdated": "2026-03-30T13:50:48.871Z"
+      },
+      "lastFile": "C:/dev/사주팔자/saju-app/src/app/fortune/major/page.tsx"
+    },
+    "compatibility": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-30T13:51:03.342Z",
+        "lastUpdated": "2026-03-30T13:54:26.126Z"
+      },
+      "lastFile": "C:/dev/사주팔자/saju-app/src/app/api/compatibility/route.ts"
+    },
+    "supabase": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-30T13:51:30.165Z",
+        "lastUpdated": "2026-03-30T21:38:16.973Z"
+      },
+      "lastFile": "C:/dev/사주팔자/saju-app/src/lib/supabase/middleware.ts"
+    },
+    "chat": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-30T13:51:43.336Z",
+        "lastUpdated": "2026-03-30T21:49:37.026Z"
+      },
+      "lastFile": "C:/dev/사주팔자/saju-app/src/app/chat/page.tsx"
+    },
+    "my": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-30T13:51:49.679Z",
+        "lastUpdated": "2026-03-30T13:51:49.679Z"
+      },
+      "lastFile": "C:/dev/사주팔자/saju-app/src/app/my/page.tsx"
+    },
+    "login": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-30T13:52:02.916Z",
+        "lastUpdated": "2026-03-30T13:52:02.916Z"
+      },
+      "lastFile": "C:/dev/사주팔자/saju-app/src/app/(auth)/login/page.tsx"
+    },
+    "ai": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-30T13:52:21.396Z",
+        "lastUpdated": "2026-03-30T13:52:33.121Z"
+      },
+      "lastFile": "C:/dev/사주팔자/saju-app/src/lib/ai/chat.ts"
+    },
+    "calculate": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-30T13:52:46.243Z",
+        "lastUpdated": "2026-03-30T13:52:46.243Z"
+      },
+      "lastFile": "C:/dev/사주팔자/saju-app/src/app/api/saju/calculate/route.ts"
+    },
+    "reading": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-30T13:52:51.606Z",
+        "lastUpdated": "2026-03-30T13:54:46.846Z"
+      },
+      "lastFile": "C:/dev/사주팔자/saju-app/src/app/api/fortune/reading/route.ts"
+    },
+    "daily": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-30T13:53:08.928Z",
+        "lastUpdated": "2026-03-30T13:53:08.928Z"
+      },
+      "lastFile": "C:/dev/사주팔자/saju-app/src/app/api/fortune/daily/route.ts"
+    },
+    "callback": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-30T13:53:41.650Z",
+        "lastUpdated": "2026-03-30T13:53:41.650Z"
+      },
+      "lastFile": "C:/dev/사주팔자/saju-app/src/app/(auth)/callback/route.ts"
+    }
+  },
+  "pipeline": {
+    "currentPhase": 1,
+    "level": "Dynamic",
+    "phaseHistory": []
+  },
+  "session": {
+    "startedAt": "2026-03-30T13:10:56.138Z",
+    "onboardingCompleted": false,
+    "lastActivity": "2026-03-30T21:49:37.026Z"
+  },
+  "history": [
+    {
+      "timestamp": "2026-03-30T13:45:19.790Z",
+      "feature": "saju-app",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:46:21.522Z",
+      "feature": "saju-app",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:46:26.325Z",
+      "feature": "saju-app",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:46:34.371Z",
+      "feature": "saju-app",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:48:52.905Z",
+      "feature": "layout",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:48:59.853Z",
+      "feature": "layout",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:49:06.970Z",
+      "feature": "layout",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:49:16.677Z",
+      "feature": "stores",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:49:22.971Z",
+      "feature": "saju-app",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:49:37.030Z",
+      "feature": "saju",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:50:00.299Z",
+      "feature": "saju",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:50:02.653Z",
+      "feature": "saju",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:50:05.017Z",
+      "feature": "saju-app",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:50:09.900Z",
+      "feature": "saju",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:50:11.878Z",
+      "feature": "saju",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:50:18.196Z",
+      "feature": "saju",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:50:19.490Z",
+      "feature": "saju",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:50:21.517Z",
+      "feature": "result",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:50:30.896Z",
+      "feature": "saju",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:50:32.627Z",
+      "feature": "fortune",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:50:37.753Z",
+      "feature": "yearly",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:50:38.488Z",
+      "feature": "saju",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:50:39.548Z",
+      "feature": "saju",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:50:48.871Z",
+      "feature": "major",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:51:01.720Z",
+      "feature": "saju",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:51:03.343Z",
+      "feature": "compatibility",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:51:14.501Z",
+      "feature": "result",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:51:15.611Z",
+      "feature": "saju",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:51:30.165Z",
+      "feature": "supabase",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:51:33.757Z",
+      "feature": "supabase",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:51:36.921Z",
+      "feature": "supabase",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:51:40.585Z",
+      "feature": "saju-app",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:51:43.336Z",
+      "feature": "chat",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:51:46.089Z",
+      "feature": "saju",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:51:49.679Z",
+      "feature": "my",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:52:02.916Z",
+      "feature": "login",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:52:11.691Z",
+      "feature": "saju",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:52:21.396Z",
+      "feature": "ai",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:52:23.507Z",
+      "feature": "saju-app",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:52:27.701Z",
+      "feature": "ai",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:52:33.121Z",
+      "feature": "ai",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:52:37.055Z",
+      "feature": "saju-app",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:52:46.243Z",
+      "feature": "calculate",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:52:51.606Z",
+      "feature": "reading",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:53:08.928Z",
+      "feature": "daily",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:53:32.070Z",
+      "feature": "compatibility",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:53:37.317Z",
+      "feature": "chat",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:53:41.650Z",
+      "feature": "callback",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:54:26.126Z",
+      "feature": "compatibility",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:54:46.846Z",
+      "feature": "reading",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T13:54:50.087Z",
+      "feature": "chat",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T21:38:16.973Z",
+      "feature": "supabase",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T21:43:13.569Z",
+      "feature": "chat",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T21:49:33.579Z",
+      "feature": "chat",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-30T21:49:37.026Z",
+      "feature": "chat",
+      "phase": "do",
+      "action": "updated"
+    }
+  ]
+}
