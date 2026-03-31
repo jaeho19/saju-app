@@ -1,8 +1,9 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import MobileLayout from '@/components/layout/mobile-layout'
+import { useSajuStore } from '@/stores/saju-store'
 
 interface PersonInput {
   readonly name: string
@@ -74,9 +75,21 @@ function PersonForm({
 
 export default function CompatibilityPage() {
   const router = useRouter()
+  const birthInput = useSajuStore((state) => state.birthInput)
   const [person1, setPerson1] = useState<PersonInput>(INITIAL_PERSON)
   const [person2, setPerson2] = useState<PersonInput>(INITIAL_PERSON)
   const [isLoading, setIsLoading] = useState(false)
+
+  useEffect(() => {
+    if (birthInput) {
+      setPerson1({
+        name: '',
+        year: String(birthInput.year),
+        month: String(birthInput.month),
+        day: String(birthInput.day),
+      })
+    }
+  }, [birthInput])
 
   const isValid =
     person1.name.trim() !== '' &&

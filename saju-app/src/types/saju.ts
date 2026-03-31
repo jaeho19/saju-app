@@ -100,6 +100,14 @@ export interface CompatibilityResult {
   readonly advice: string
 }
 
+// 분석 기록
+export interface AnalysisHistoryEntry {
+  readonly id: string
+  readonly birthInput: BirthInput
+  readonly sajuResult: SajuResult
+  readonly analyzedAt: string
+}
+
 // AI 풀이 요청
 export type ReadingTopic = 'comprehensive' | 'love' | 'money' | 'career' | 'health'
 

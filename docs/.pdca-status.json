@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "lastUpdated": "2026-03-31T00:52:15.123Z",
+  "lastUpdated": "2026-03-31T01:16:49.654Z",
   "activeFeatures": [
     "saju-app",
     "layout",
@@ -35,9 +35,9 @@
         "do"
       ],
       "phaseNumber": 3,
-      "lastFile": "C:/dev/사주팔자/saju-app/src/lib/utils/date.ts",
+      "lastFile": "C:\\dev\\사주팔자\\saju-app\\src\\types\\saju.ts",
       "timestamps": {
-        "lastUpdated": "2026-03-30T13:52:37.055Z"
+        "lastUpdated": "2026-03-31T01:13:34.726Z"
       }
     },
     "layout": {
@@ -62,7 +62,7 @@
       "documents": {},
       "timestamps": {
         "started": "2026-03-30T13:49:16.676Z",
-        "lastUpdated": "2026-03-31T00:44:02.152Z"
+        "lastUpdated": "2026-03-31T01:16:31.798Z"
       },
       "lastFile": "C:\\dev\\사주팔자\\saju-app\\src\\stores\\saju-store.ts"
     },
@@ -101,9 +101,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-03-30T13:50:32.627Z",
-        "lastUpdated": "2026-03-30T13:50:32.627Z"
+        "lastUpdated": "2026-03-31T01:15:14.637Z"
       },
-      "lastFile": "C:/dev/사주팔자/saju-app/src/app/fortune/page.tsx"
+      "lastFile": "C:\\dev\\사주팔자\\saju-app\\src\\app\\fortune\\page.tsx"
     },
     "yearly": {
       "phase": "do",
@@ -140,9 +140,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-03-30T13:51:03.342Z",
-        "lastUpdated": "2026-03-30T13:54:26.126Z"
+        "lastUpdated": "2026-03-31T01:15:41.479Z"
       },
-      "lastFile": "C:/dev/사주팔자/saju-app/src/app/api/compatibility/route.ts"
+      "lastFile": "C:\\dev\\사주팔자\\saju-app\\src\\app\\compatibility\\page.tsx"
     },
     "supabase": {
       "phase": "do",
@@ -179,7 +179,7 @@
       "documents": {},
       "timestamps": {
         "started": "2026-03-30T13:51:49.679Z",
-        "lastUpdated": "2026-03-31T00:33:32.180Z"
+        "lastUpdated": "2026-03-31T01:16:49.654Z"
       },
       "lastFile": "C:\\dev\\사주팔자\\saju-app\\src\\app\\my\\page.tsx"
     },
@@ -283,7 +283,7 @@
   "session": {
     "startedAt": "2026-03-30T13:10:56.138Z",
     "onboardingCompleted": false,
-    "lastActivity": "2026-03-31T00:52:15.123Z"
+    "lastActivity": "2026-03-31T01:16:49.654Z"
   },
   "history": [
     {
@@ -709,6 +709,60 @@
     {
       "timestamp": "2026-03-31T00:52:15.123Z",
       "feature": "profiles",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-31T01:13:34.726Z",
+      "feature": "saju-app",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-31T01:13:49.590Z",
+      "feature": "stores",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-31T01:14:17.400Z",
+      "feature": "my",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-31T01:15:14.637Z",
+      "feature": "fortune",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-31T01:15:31.925Z",
+      "feature": "compatibility",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-31T01:15:41.479Z",
+      "feature": "compatibility",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-31T01:16:23.794Z",
+      "feature": "stores",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-31T01:16:31.798Z",
+      "feature": "stores",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-31T01:16:49.654Z",
+      "feature": "my",
       "phase": "do",
       "action": "updated"
     }
