@@ -25,3 +25,6 @@ npm-debug.log*
 
 # Claude
 .claude/
+
+# Local Netlify folder
+.netlify

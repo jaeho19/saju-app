@@ -1,10 +1,12 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
+import ReactMarkdown from 'react-markdown'
 import MobileLayout from '@/components/layout/mobile-layout'
 import BirthInputForm from '@/components/saju/birth-input-form'
-import { useSaju } from '@/hooks/use-saju'
-import type { SajuResult } from '@/types/saju'
+import { useSajuStore } from '@/stores/saju-store'
+import type { BirthInput, SajuResult } from '@/types/saju'
+import type { CalculateSajuResponse, ApiError } from '@/types/api'
 
 interface ChatMessage {
   readonly id: string
@@ -12,24 +14,185 @@ interface ChatMessage {
   readonly content: string
 }
 
+interface CompatibilityData {
+  readonly score: number
+  readonly grade: string
+  readonly strengths: readonly string[]
+  readonly weaknesses: readonly string[]
+  readonly advice: string
+}
+
+function readCompatibilityFromSession(): CompatibilityData | null {
+  try {
+    const raw = sessionStorage.getItem('compatibility_result')
+    if (!raw) return null
+    sessionStorage.removeItem('compatibility_result')
+    return JSON.parse(raw) as CompatibilityData
+  } catch {
+    return null
+  }
+}
+
+function formatCompatibilityMessage(data: CompatibilityData): string {
+  const strengthsList = data.strengths.map((s) => `- ${s}`).join('\n')
+  const weaknessesList = data.weaknesses.map((w) => `- ${w}`).join('\n')
+  return `궁합 분석 결과를 바탕으로 상담해주세요.
+
+궁합 점수: ${data.score}점 (${data.grade}등급)
+
+강점:
+${strengthsList}
+
+주의점:
+${weaknessesList}
+
+조언: ${data.advice}
+
+이 궁합 결과에 대해 더 자세히 풀어주시고, 두 사람이 관계를 발전시키려면 어떻게 해야 할지 조언해주세요.`
+}
+
 export default function ChatPage() {
-  const { sajuResult, isLoading: isSajuLoading, calculateSaju } = useSaju()
+  const sajuResult = useSajuStore((state) => state.sajuResult)
+  const setBirthInput = useSajuStore((state) => state.setBirthInput)
+  const setSajuResult = useSajuStore((state) => state.setSajuResult)
+  const [isSajuLoading, setIsSajuLoading] = useState(false)
   const [messages, setMessages] = useState<readonly ChatMessage[]>([])
   const [input, setInput] = useState('')
   const [isStreaming, setIsStreaming] = useState(false)
   const [hasStarted, setHasStarted] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
+  const calculateSaju = useCallback(async (birthInputData: BirthInput) => {
+    setIsSajuLoading(true)
+    setBirthInput(birthInputData)
+    try {
+      const response = await fetch('/api/saju/calculate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(birthInputData),
+      })
+      if (!response.ok) {
+        const errorData: ApiError = await response.json()
+        throw new Error(errorData.message || '사주 계산에 실패했습니다')
+      }
+      const data: CalculateSajuResponse = await response.json()
+      setSajuResult(data.result)
+    } catch {
+      // error handled by store
+    } finally {
+      setIsSajuLoading(false)
+    }
+  }, [setBirthInput, setSajuResult])
+
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages, isStreaming])
 
   useEffect(() => {
-    if (sajuResult && !hasStarted) {
+    if (hasStarted) return
+
+    const compatData = readCompatibilityFromSession()
+    if (compatData && sajuResult) {
+      setHasStarted(true)
+      startCompatibilityChat(compatData)
+      return
+    }
+
+    if (sajuResult) {
       setHasStarted(true)
       startAutoReading(sajuResult)
     }
   }, [sajuResult, hasStarted])
+
+  async function startCompatibilityChat(compatData: CompatibilityData) {
+    if (!sajuResult) return
+
+    const welcomeMsg: ChatMessage = {
+      id: 'welcome',
+      role: 'assistant',
+      content: '궁합 분석 결과를 바탕으로 상담을 시작합니다...',
+    }
+    setMessages([welcomeMsg])
+    setIsStreaming(true)
+
+    const userPrompt = formatCompatibilityMessage(compatData)
+
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          sajuResult,
+          message: userPrompt,
+          history: [],
+        }),
+      })
+
+      if (!response.ok) throw new Error('AI 상담 요청 실패')
+
+      const reader = response.body?.getReader()
+      if (!reader) throw new Error('스트림을 읽을 수 없습니다')
+
+      const decoder = new TextDecoder()
+      let accumulated = ''
+      const assistantId = 'compat-reading'
+
+      while (true) {
+        const { done, value } = await reader.read()
+        if (done) break
+
+        const chunk = decoder.decode(value, { stream: true })
+        const lines = chunk.split('\n')
+
+        for (const line of lines) {
+          if (line.startsWith('data: ')) {
+            const data = line.slice(6)
+            if (data === '[DONE]') break
+            try {
+              const parsed = JSON.parse(data)
+              if (parsed.content) {
+                accumulated += parsed.content
+                setMessages([
+                  welcomeMsg,
+                  { id: assistantId, role: 'assistant', content: accumulated },
+                ])
+              }
+            } catch {
+              // skip
+            }
+          }
+        }
+      }
+
+      if (accumulated === '') {
+        setMessages([
+          welcomeMsg,
+          {
+            id: assistantId,
+            role: 'assistant',
+            content: `## 궁합 상담\n\n궁합 점수 **${compatData.score}점 (${compatData.grade}등급)**입니다.\n\n### 강점\n${compatData.strengths.map((s) => `- ${s}`).join('\n')}\n\n### 주의점\n${compatData.weaknesses.map((w) => `- ${w}`).join('\n')}\n\n### 조언\n${compatData.advice}\n\n*더 자세한 AI 풀이를 위해 OpenAI API 키를 설정해주세요.*`,
+          },
+        ])
+      }
+    } catch {
+      setMessages([
+        welcomeMsg,
+        {
+          id: 'compat-error',
+          role: 'assistant',
+          content: `## 궁합 상담\n\n궁합 점수 **${compatData.score}점 (${compatData.grade}등급)**입니다.\n\n### 강점\n${compatData.strengths.map((s) => `- ${s}`).join('\n')}\n\n### 주의점\n${compatData.weaknesses.map((w) => `- ${w}`).join('\n')}\n\n### 조언\n${compatData.advice}\n\n*더 자세한 AI 풀이를 위해 OpenAI API 키를 설정해주세요.*`,
+        },
+      ])
+    } finally {
+      setIsStreaming(false)
+      const guideMsg: ChatMessage = {
+        id: 'guide',
+        role: 'assistant',
+        content: '궁합에 대해 더 궁금한 점이 있으시면 질문해주세요!',
+      }
+      setMessages((prev) => [...prev, guideMsg])
+    }
+  }
 
   async function startAutoReading(result: SajuResult) {
     const welcomeMsg: ChatMessage = {
@@ -227,12 +390,16 @@ export default function ChatPage() {
     )
   }
 
+  const headerLabel = hasStarted && messages.some((m) => m.id === 'compat-reading' || m.id === 'compat-error')
+    ? 'AI 궁합 상담'
+    : 'AI 사주 상담'
+
   return (
     <MobileLayout>
       <div className="flex flex-col h-[calc(100dvh-8rem)]">
         <div className="py-3 px-4 border-b border-[var(--color-gold-light)]/30">
           <h1 className="text-lg font-bold text-center text-[var(--color-dark)]">
-            AI 사주 상담
+            {headerLabel}
           </h1>
           <p className="text-xs text-center text-[var(--color-dark)]/50">
             {sajuResult.dayPillar.heavenlyStem}{sajuResult.dayPillar.earthlyBranch}일주 · {sajuResult.bodyStrength.type === 'strong' ? '신강' : '신약'} · 용신 {sajuResult.bodyStrength.yongsin}
@@ -246,13 +413,19 @@ export default function ChatPage() {
               className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
             >
               <div
-                className={`max-w-[85%] px-4 py-3 rounded-2xl text-sm leading-relaxed whitespace-pre-wrap ${
+                className={`max-w-[85%] px-4 py-3 rounded-2xl text-sm leading-relaxed ${
                   message.role === 'user'
-                    ? 'bg-[var(--color-gold)] text-white rounded-br-md'
+                    ? 'bg-[var(--color-gold)] text-white rounded-br-md whitespace-pre-wrap'
                     : 'bg-white text-[var(--color-dark)] shadow-sm border border-[var(--color-gold-light)]/30 rounded-bl-md'
                 }`}
               >
-                {message.content}
+                {message.role === 'assistant' ? (
+                  <div className="prose-saju">
+                    <ReactMarkdown>{message.content}</ReactMarkdown>
+                  </div>
+                ) : (
+                  message.content
+                )}
               </div>
             </div>
           ))}

@@ -1,9 +1,9 @@
 {
-  "sessionCount": 2,
+  "sessionCount": 4,
   "lastSession": {
-    "startedAt": "2026-03-30T13:31:36.606Z",
+    "startedAt": "2026-03-31T00:36:43.804Z",
     "platform": "claude",
-    "level": "Dynamic"
+    "level": "Starter"
   },
   "currentFeature": "saju-app",
   "phase": "do"

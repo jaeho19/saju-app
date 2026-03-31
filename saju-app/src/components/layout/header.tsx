@@ -7,12 +7,8 @@ export default function Header() {
         <Link href="/" className="text-xl font-bold text-[var(--color-gold)]">
           사주팔자
         </Link>
-        <Link
-          href="/login"
-          className="text-sm font-medium text-[var(--color-dark)]/70 hover:text-[var(--color-gold)] transition-colors"
-        >
-          로그인
-        </Link>
+        <div />
+
       </div>
     </header>
   )

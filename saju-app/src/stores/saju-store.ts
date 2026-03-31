@@ -1,4 +1,5 @@
 import { create } from 'zustand'
+import { persist } from 'zustand/middleware'
 import type { BirthInput, SajuResult } from '@/types/saju'
 
 interface SajuState {
@@ -20,11 +21,22 @@ const INITIAL_STATE = {
   error: null,
 } as const
 
-export const useSajuStore = create<SajuState>((set) => ({
-  ...INITIAL_STATE,
-  setBirthInput: (input) => set((state) => ({ ...state, birthInput: input })),
-  setSajuResult: (result) => set((state) => ({ ...state, sajuResult: result })),
-  setLoading: (loading) => set((state) => ({ ...state, isLoading: loading })),
-  setError: (error) => set((state) => ({ ...state, error })),
-  reset: () => set(() => ({ ...INITIAL_STATE })),
-}))
+export const useSajuStore = create<SajuState>()(
+  persist(
+    (set) => ({
+      ...INITIAL_STATE,
+      setBirthInput: (input) => set((state) => ({ ...state, birthInput: input })),
+      setSajuResult: (result) => set((state) => ({ ...state, sajuResult: result })),
+      setLoading: (loading) => set((state) => ({ ...state, isLoading: loading })),
+      setError: (error) => set((state) => ({ ...state, error })),
+      reset: () => set(() => ({ ...INITIAL_STATE })),
+    }),
+    {
+      name: 'saju_result',
+      partialize: (state) => ({
+        birthInput: state.birthInput,
+        sajuResult: state.sajuResult,
+      }),
+    },
+  ),
+)

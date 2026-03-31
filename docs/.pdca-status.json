@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "lastUpdated": "2026-03-30T21:49:37.026Z",
+  "lastUpdated": "2026-03-31T00:52:15.123Z",
   "activeFeatures": [
     "saju-app",
     "layout",
@@ -19,7 +19,8 @@
     "calculate",
     "reading",
     "daily",
-    "callback"
+    "callback",
+    "profiles"
   ],
   "primaryFeature": "saju-app",
   "features": {
@@ -48,9 +49,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-03-30T13:48:52.905Z",
-        "lastUpdated": "2026-03-30T13:49:06.970Z"
+        "lastUpdated": "2026-03-31T00:33:36.082Z"
       },
-      "lastFile": "C:/dev/사주팔자/saju-app/src/components/layout/mobile-layout.tsx"
+      "lastFile": "C:\\dev\\사주팔자\\saju-app\\src\\components\\layout\\header.tsx"
     },
     "stores": {
       "phase": "do",
@@ -61,9 +62,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-03-30T13:49:16.676Z",
-        "lastUpdated": "2026-03-30T13:49:16.676Z"
+        "lastUpdated": "2026-03-31T00:44:02.152Z"
       },
-      "lastFile": "C:/dev/사주팔자/saju-app/src/stores/saju-store.ts"
+      "lastFile": "C:\\dev\\사주팔자\\saju-app\\src\\stores\\saju-store.ts"
     },
     "saju": {
       "phase": "do",
@@ -87,9 +88,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-03-30T13:50:21.517Z",
-        "lastUpdated": "2026-03-30T13:51:14.501Z"
+        "lastUpdated": "2026-03-31T00:49:58.165Z"
       },
-      "lastFile": "C:/dev/사주팔자/saju-app/src/app/compatibility/result/page.tsx"
+      "lastFile": "C:\\dev\\사주팔자\\saju-app\\src\\app\\compatibility\\result\\page.tsx"
     },
     "fortune": {
       "phase": "do",
@@ -113,9 +114,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-03-30T13:50:37.753Z",
-        "lastUpdated": "2026-03-30T13:50:37.753Z"
+        "lastUpdated": "2026-03-31T00:45:24.131Z"
       },
-      "lastFile": "C:/dev/사주팔자/saju-app/src/app/fortune/yearly/page.tsx"
+      "lastFile": "C:\\dev\\사주팔자\\saju-app\\src\\app\\fortune\\yearly\\page.tsx"
     },
     "major": {
       "phase": "do",
@@ -126,9 +127,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-03-30T13:50:48.871Z",
-        "lastUpdated": "2026-03-30T13:50:48.871Z"
+        "lastUpdated": "2026-03-31T00:44:48.850Z"
       },
-      "lastFile": "C:/dev/사주팔자/saju-app/src/app/fortune/major/page.tsx"
+      "lastFile": "C:\\dev\\사주팔자\\saju-app\\src\\app\\fortune\\major\\page.tsx"
     },
     "compatibility": {
       "phase": "do",
@@ -165,9 +166,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-03-30T13:51:43.336Z",
-        "lastUpdated": "2026-03-30T21:49:37.026Z"
+        "lastUpdated": "2026-03-31T00:51:06.573Z"
       },
-      "lastFile": "C:/dev/사주팔자/saju-app/src/app/chat/page.tsx"
+      "lastFile": "C:\\dev\\사주팔자\\saju-app\\src\\app\\chat\\page.tsx"
     },
     "my": {
       "phase": "do",
@@ -178,9 +179,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-03-30T13:51:49.679Z",
-        "lastUpdated": "2026-03-30T13:51:49.679Z"
+        "lastUpdated": "2026-03-31T00:33:32.180Z"
       },
-      "lastFile": "C:/dev/사주팔자/saju-app/src/app/my/page.tsx"
+      "lastFile": "C:\\dev\\사주팔자\\saju-app\\src\\app\\my\\page.tsx"
     },
     "login": {
       "phase": "do",
@@ -259,6 +260,19 @@
         "lastUpdated": "2026-03-30T13:53:41.650Z"
       },
       "lastFile": "C:/dev/사주팔자/saju-app/src/app/(auth)/callback/route.ts"
+    },
+    "profiles": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-31T00:52:15.123Z",
+        "lastUpdated": "2026-03-31T00:52:15.123Z"
+      },
+      "lastFile": "C:\\dev\\사주팔자\\saju-app\\src\\app\\my\\profiles\\page.tsx"
     }
   },
   "pipeline": {
@@ -269,7 +283,7 @@
   "session": {
     "startedAt": "2026-03-30T13:10:56.138Z",
     "onboardingCompleted": false,
-    "lastActivity": "2026-03-30T21:49:37.026Z"
+    "lastActivity": "2026-03-31T00:52:15.123Z"
   },
   "history": [
     {
@@ -599,6 +613,102 @@
     {
       "timestamp": "2026-03-30T21:49:37.026Z",
       "feature": "chat",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-31T00:33:32.180Z",
+      "feature": "my",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-31T00:33:36.082Z",
+      "feature": "layout",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-31T00:37:50.599Z",
+      "feature": "chat",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-31T00:38:06.926Z",
+      "feature": "chat",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-31T00:44:02.152Z",
+      "feature": "stores",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-31T00:44:48.850Z",
+      "feature": "major",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-31T00:45:24.131Z",
+      "feature": "yearly",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-31T00:45:44.537Z",
+      "feature": "chat",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-31T00:45:58.607Z",
+      "feature": "chat",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-31T00:49:58.165Z",
+      "feature": "result",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-31T00:50:12.454Z",
+      "feature": "chat",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-31T00:50:23.697Z",
+      "feature": "chat",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-31T00:50:42.022Z",
+      "feature": "chat",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-31T00:50:56.482Z",
+      "feature": "chat",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-31T00:51:06.573Z",
+      "feature": "chat",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-31T00:52:15.123Z",
+      "feature": "profiles",
       "phase": "do",
       "action": "updated"
     }

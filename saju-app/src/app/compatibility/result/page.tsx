@@ -1,5 +1,6 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import MobileLayout from '@/components/layout/mobile-layout'
 
@@ -21,10 +22,27 @@ const GRADE_COLORS: Record<string, string> = {
 } as const
 
 export default function CompatibilityResultPage() {
+  const router = useRouter()
+
   // Placeholder data - will be replaced with store data
   const score = 78
   const grade = 'B'
   const gradeColor = GRADE_COLORS[grade] ?? 'text-[var(--color-dark)]'
+  const strengths = PLACEHOLDER_STRENGTHS
+  const weaknesses = PLACEHOLDER_WEAKNESSES
+  const advice = '서로의 오행 균형을 맞추기 위해 상대방의 장점을 인정하고, 부족한 부분은 함께 보완해 나가세요.'
+
+  function handleAiConsult() {
+    const compatibilityData = {
+      score,
+      grade,
+      strengths: [...strengths],
+      weaknesses: [...weaknesses],
+      advice,
+    }
+    sessionStorage.setItem('compatibility_result', JSON.stringify(compatibilityData))
+    router.push('/chat')
+  }
 
   return (
     <MobileLayout>
@@ -56,7 +74,7 @@ export default function CompatibilityResultPage() {
             강점
           </h2>
           <ul className="space-y-2">
-            {PLACEHOLDER_STRENGTHS.map((item) => (
+            {strengths.map((item) => (
               <li
                 key={item}
                 className="flex items-start gap-2 text-sm text-[var(--color-dark)]/70"
@@ -75,7 +93,7 @@ export default function CompatibilityResultPage() {
             주의점
           </h2>
           <ul className="space-y-2">
-            {PLACEHOLDER_WEAKNESSES.map((item) => (
+            {weaknesses.map((item) => (
               <li
                 key={item}
                 className="flex items-start gap-2 text-sm text-[var(--color-dark)]/70"
@@ -94,8 +112,7 @@ export default function CompatibilityResultPage() {
             조언
           </h2>
           <p className="text-sm text-[var(--color-dark)]/70 leading-relaxed">
-            서로의 오행 균형을 맞추기 위해 상대방의 장점을 인정하고,
-            부족한 부분은 함께 보완해 나가세요.
+            {advice}
           </p>
         </section>
 
@@ -106,12 +123,13 @@ export default function CompatibilityResultPage() {
           >
             다시 분석하기
           </Link>
-          <Link
-            href="/chat"
+          <button
+            type="button"
+            onClick={handleAiConsult}
             className="flex-1 text-center py-3 rounded-xl bg-[var(--color-gold)] text-white text-sm font-semibold shadow-sm hover:opacity-90 transition-opacity"
           >
             AI 상담 받기
-          </Link>
+          </button>
         </div>
       </div>
     </MobileLayout>
